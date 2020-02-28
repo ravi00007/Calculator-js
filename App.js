@@ -1,15 +1,15 @@
-var record = document.querySelector('#microphone');
+let record = document.querySelector('#microphone');
 record.onclick = function(){
     console.log("inside click");
     record.classList.add('record');
-    var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+    let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
     recognition.lang = 'en-US';
                 recognition.interimResults = false;
                 recognition.maxAlternatives = 5;
                 recognition.start();
 
                 recognition.onresult = function(event) {
-                    var input = event.results[0][0].transcript;
+                    let input = event.results[0][0].transcript;
                     console.log('You said: ', event.results[0][0].transcript);
                     document.querySelector("#text-output").innerHTML= input;
                     setTimeout(function(){
@@ -28,9 +28,9 @@ function evaluate(input){
                         document.querySelector("#text-output").innerHTML= "";
                     }
 }
-var numbers = document.querySelectorAll(".number");
-var operator = document.querySelectorAll(".operator");
-var str ="";
+let numbers = document.querySelectorAll(".number");
+let operator = document.querySelectorAll(".operator");
+let str ="";
 Array.prototype.forEach.call(numbers,function(number){
                              number.onclick = addStr;
                              })
@@ -60,14 +60,14 @@ clear.onclick = function(){
     str = "";
     document.querySelector("#text-output").innerHTML = str;
 }
-var backspace = document.querySelector("#backspace");
+let backspace = document.querySelector("#backspace");
 backspace.onclick = function(){
     str = str.substring(0, str.length-1);
     document.querySelector("#text-output").innerHTML = str;
 }
-var sign = document.querySelector("#sign");
+let sign = document.querySelector("#sign");
 sign.onclick = function(){
-    var i=1,char1,char2,val=str.substring(str.length-i, str.length);
+    let i=1,char1,char2,val=str.substring(str.length-i, str.length);
     while(!isNaN(val) && eval(val)>0 && i <=str.length){
         i++;
         val=str.substring(str.length-i, str.length);
@@ -80,4 +80,4 @@ sign.onclick = function(){
     document.querySelector("#text-output").innerHTML = str;
     }
 }
-var output = document.querySelector("#text-output");
+let output = document.querySelector("#text-output");
